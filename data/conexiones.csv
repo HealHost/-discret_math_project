@@ -1,0 +1,21 @@
+ciudad_origen,ciudad_destino,tiempo_de_viaje_min aprox.
+Zúrich,Winterthur, 20 minutos 
+Zúrich,Lucerne,41 minutos
+Zúrich,Basilea,62 minutos
+Zúrich,Sankt Gallen,60 minutos
+Winterthur,Sankt Gallen,33 minutos
+Winterthur,Basel,95 minutos
+Basel,Bern,63 minutos
+Basel,Zúrich,55 minutos
+Bern,Friburgo,22 minutos
+Bern,Biel,27 minutos
+Bern,Lucerne,61 minutos
+Biel,Neuchâtel,19 minutos
+Neuchâtel,Friburgo,56 minutos 
+Neuchâtel,Lausanne,47 minutos
+Friburgo,Lausanne,53 minutos
+Lausanne,Ginebra,39 minutos
+Lausanne,Sion,57 minutos
+Lucerne,Bellinzona,84 minutos 
+Bellinzona,Lugano,19 minutos
+Bellinzona,Chur,185 minutos
