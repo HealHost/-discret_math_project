@@ -31,7 +31,6 @@ Los datos se encuentran en `data/conexiones.csv`.
 ├── .gitignore
 ├── main.py
 ├── core/
-│   ├── __init__.py
 │   ├── grafo.py
 │   └── caminos.py
 ├── data/
