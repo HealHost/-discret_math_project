@@ -36,7 +36,6 @@ Los datos se encuentran en `data/conexiones.csv`.
 ├── data/
 │   └── conexiones.csv
 └── frontend/
-    ├── __init__.py
     ├── interfaz.py
     └── visualizacion.py
 ```
