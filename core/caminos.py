@@ -1,7 +1,7 @@
 import heapq
 
 def calcular_ruta_dijkstra(grafo, origen, destino):
- 
+
     # --- Validación inicial ---
     if origen not in grafo or destino not in grafo:
         return {
