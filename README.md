@@ -1,7 +1,6 @@
-# -discret_math_project
 # Ruta Mínima en Suiza
 
-Proyecto de Matemáticas Discretas que modela 15 ciudades suizas como un grafo ponderado G = (V, E, w) y calcula la ruta de costo mínimo entre dos ciudades mediante una interfaz gráfica.
+Proyecto de Matemáticas Discretas que modela 15 ciudades suizas como un grafo ponderado G = (V, E, w) y calcula la ruta de costo mínimo entre dos ciudades mediante una aplicación web interactiva.
 
 ## Integrantes y roles
 
@@ -27,11 +26,11 @@ Los datos se encuentran en `data/conexiones.csv`.
 ```
 .
 ├── README.md
-├── requirements.txt
+├── requerimientos.txt
 ├── .gitignore
 ├── main.py
 ├── core/
-│   ├── grafo.py
+│   ├── grafos.py
 │   └── caminos.py
 ├── data/
 │   └── conexiones.csv
@@ -45,7 +44,7 @@ Los datos se encuentran en `data/conexiones.csv`.
 ```bash
 git clone https://github.com/HealHost/-discret_math_project.git
 cd -discret_math_project
-pip install -r requirements.txt
+pip install -r requerimientos.txt
 ```
 
 ## Ejecución
@@ -53,7 +52,13 @@ pip install -r requirements.txt
 Una vez instaladas las dependencias, ejecuta:
 
 ```bash
-python main.py
+streamlit run main.py
 ```
 
-Esto abre la interfaz gráfica para elegir origen y destino, y ver la ruta de costo mínimo.
+Si te aparece el error `command not found: streamlit`, usa en su lugar:
+
+```bash
+python -m streamlit run main.py
+```
+
+Esto abre la aplicación en el navegador para elegir origen y destino, y ver la ruta de costo mínimo.
