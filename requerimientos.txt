@@ -1,16 +1,12 @@
 =============================================|
 
-INTERFAZ GRAFICA
-customtkinter>=5.2.0
+# Interfaz web y visualización del grafo/ruta
+streamlit>=1.30.0
+plotly>=5.18.0
 
 =============================================|
 
-VISUALIZACION DEL GRAFO Y LA RUTA DENTRO DE LA GUI
-matplotlib>=3.7.0
-
-=============================================|
-
-NOTA: el algoritmo de Dijkstra usa heapq y csv, ambas librerías
+# NOTA: el algoritmo de Dijkstra usa heapq y csv, ambas librerías
 integradas en Python (no requieren instalación).
 
 =============================================|
