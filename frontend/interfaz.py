@@ -109,57 +109,39 @@ def mostrar_sidebar():
 def mostrar_titulo():
     
     #Muestra el título principal y la descripción de la app
-    st.markdown("Visualizador Dijkstra: Ciudades Suizas")
+    st.markdown("**Visualizador Dijkstra**: Ciudades Suizas")
     st.markdown(
         "Selecciona una ciudad de origen y una ciudad de destino "
         "para encontrar la ruta más corta."
     )
 
-
-#Origen, destino, tiempo y botón
-
 def mostrar_controles(lista_ciudades, tiempo_total):
+    # Usamos 4 columnas, dándole un poco menos de espacio a la última (el botón)
+    col1, col2, col3, col4 = st.columns([2, 2, 2, 1]) 
     
-    # Divide la pantalla en 4 columnas y pone un control en cada una
-    col1, col2, col3, col4 = st.columns(4)
-
     with col1:
-        
-        # Menú para elegir la ciudad de partida
-        st.markdown("**Ciudad de origen**")
-        origen = st.selectbox(
-            "", lista_ciudades,
-            key="origen",
-            label_visibility="collapsed"
-        )
-
+        origen = st.selectbox("Ciudad de Origen", lista_ciudades)
     with col2:
-        
-        #Menú para elegir la ciudad de llegada
-        st.markdown("**Ciudad de destino**")
-        destino = st.selectbox(
-            "", lista_ciudades,
-            key="destino",
-            label_visibility="collapsed"
-        )
-
+        destino = st.selectbox("Ciudad de Destino", lista_ciudades)
     with col3:
-        #Muestra el tiempo que tardó la ruta encontrada
-        st.markdown("**Tiempo total**")
-        texto = f"{tiempo_total} minutos" if tiempo_total is not None else "— minutos"
-        st.markdown(
-            f'<div class="caja-tiempo">{texto}</div>',
-            unsafe_allow_html=True
-        )
-
+        opciones_transporte = {
+            "Tren": "tren_min",
+            "Auto": "auto_min",
+            "Caminando": "caminando_min",
+            "Bicicleta": "bicicleta_min"
+        }
+        seleccion = st.selectbox("Medio de Transporte", list(opciones_transporte.keys()))
+        modo_viaje = opciones_transporte[seleccion] 
+        
     with col4:
-        #Botón que inicia el cálculo de la ruta
-        st.markdown("**Calcular ruta**")
-        calcular = st.button("Calcular ruta", use_container_width=True)
-
-    #Devuelve lo que eligió el usuario y si presionó el botón
-    return origen, destino, calcular
-
+        # Añadimos saltos de línea vacíos para empujar el botón hacia abajo 
+        # y que quede alineado con las cajas de texto de los selectores.
+        st.write("") 
+        st.write("")
+        calcular = st.button("Calcular Ruta", use_container_width=True)
+    
+    # Ya no devolvemos el tiempo aquí, lo manejaremos en main.py
+    return origen, destino, modo_viaje, calcular
 
 #Muestra la ruta encontrada debajo de los controles
 

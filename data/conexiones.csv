@@ -1,21 +1,21 @@
-ciudad_origen,ciudad_destino,tiempo_de_viaje_min aprox.
-Zúrich,Winterthur, 20 minutos 
-Zúrich,Lucerne,41 minutos
-Zúrich,Basilea,62 minutos
-Zúrich,Sankt Gallen,60 minutos
-Winterthur,Sankt Gallen,33 minutos
-Winterthur,Basilea,95 minutos
-Basilea,Bern,63 minutos
-Basilea,Zúrich,55 minutos
-Bern,Friburgo,22 minutos
-Bern,Biel,27 minutos
-Bern,Lucerne,61 minutos
-Biel,Neuchâtel,19 minutos
-Neuchâtel,Friburgo,56 minutos 
-Neuchâtel,Lausanne,47 minutos
-Friburgo,Lausanne,53 minutos
-Lausanne,Ginebra,39 minutos
-Lausanne,Sion,57 minutos
-Lucerne,Bellinzona,84 minutos 
-Bellinzona,Lugano,19 minutos
-Bellinzona,Chur,185 minutos
+ciudad_origen,ciudad_destino,auto_min,tren_min,caminando_min,bicicleta_min
+Zúrich,Winterthur,19,23,340,98
+Zúrich,Lucerne,38,48,672,214
+Zúrich,Basilea,61,140,1405,304
+Zúrich,Sankt Gallen,54,65,1064,359
+Winterthur,Sankt Gallen,41,79,771,232
+Winterthur,Basilea,68,157,1324,374
+Basilea,Bern,69,63,1295,401
+Basilea,Zúrich,62,70,1138,331
+Bern,Friburgo,28,52,420,129
+Bern,Biel,34,27,420,123
+Bern,Lucerne,70,95,1134,313
+Biel,Neuchâtel,29,19,422,105
+Neuchâtel,Friburgo,43,56,360,120
+Neuchâtel,Lausanne,47,47,916,246
+Friburgo,Lausanne,54,44,807,258
+Lausanne,Ginebra,50,55,816,212
+Lausanne,Sion,63,76,1265,313
+Lucerne,Bellinzona,94,84,4260,656
+Bellinzona,Lugano,26,32,446,138
+Bellinzona,Chur,89,132,4440,595

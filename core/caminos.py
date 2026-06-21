@@ -1,17 +1,20 @@
 import heapq
 
-def calcular_ruta_dijkstra(grafo, origen, destino):
-
-    # --- Validación inicial ---
+def calcular_ruta_dijkstra(grafo, origen, destino, modo_viaje):
+    """
+    Calcula el camino mínimo en un grafo ponderado usando Dijkstra.
+    Se agregó 'modo_viaje' para elegir el peso dinámicamente.
+    """
+    # 1. Validaciones
     if origen not in grafo or destino not in grafo:
-        return {
-            "exito": False,
-            "costo_minutos": 0,
-            "ruta_secuencial": [],
-            "mensaje": f"Error: '{origen}' o '{destino}' no existen en el mapa."
-        }
+        return {"exito": False, "costo_minutos": 0, "ruta": [], "mensaje": "Ciudades inválidas."}
+        
+    # Verificar que el modo de viaje exista en los datos
+    modos_validos = ['auto_min', 'tren_min', 'caminando_min', 'bicicleta_min']
+    if modo_viaje not in modos_validos:
+        return {"exito": False, "costo_minutos": 0, "ruta": [], "mensaje": "Modo de transporte inválido."}
 
-    # Preparación de variables
+    # 2. Inicialización
     tiempos = {nodo: float('infinity') for nodo in grafo}
     tiempos[origen] = 0
     nodos_previos = {}
@@ -20,36 +23,29 @@ def calcular_ruta_dijkstra(grafo, origen, destino):
     while cola:
         tiempo_actual, nodo_actual = heapq.heappop(cola)
         
-        # Si llegamos al destino, reconstruimos la ruta
         if nodo_actual == destino:
             ruta = []
             while nodo_actual in nodos_previos:
                 ruta.insert(0, nodo_actual)
                 nodo_actual = nodos_previos[nodo_actual]
             ruta.insert(0, origen)
-            
-            # --- Exito: Salida formateada para el frontend ---
-            return {
-                "exito": True,
-                "costo_minutos": tiempos[destino],
-                "ruta_secuencial": ruta,
-                "mensaje": "Ruta calculada correctamente."
-            }
+            return {"exito": True, "costo_minutos": tiempos[destino], "ruta": ruta, "mensaje": "Ruta calculada."}
             
         if tiempo_actual > tiempos[nodo_actual]:
             continue
             
-        for vecino, tiempo_viaje in grafo[nodo_actual].items():
+        # 3. Relajación de aristas (AQUÍ ESTÁ LA MAGIA)
+        # 'pesos' ahora es un diccionario: {'auto_min': 19, 'tren_min': 23...}
+        for vecino, pesos in grafo[nodo_actual].items():
+            
+            # Seleccionamos solo el tiempo del medio de transporte elegido
+            tiempo_viaje = pesos[modo_viaje] 
+            
             tiempo_calculado = tiempo_actual + tiempo_viaje
+            
             if tiempo_calculado < tiempos[vecino]:
                 tiempos[vecino] = tiempo_calculado
                 nodos_previos[vecino] = nodo_actual
                 heapq.heappush(cola, (tiempo_calculado, vecino))
                 
-    # --- Fracaso : Si el grafo esta desconectado o la ruta es imposible ---
-    return {
-        "exito": False,
-        "costo_minutos": 0,
-        "ruta_secuencial": [],
-        "mensaje": "No se encontró una conexión válida entre estas ciudades."
-    }
+    return {"exito": False, "costo_minutos": 0, "ruta": [], "mensaje": "Sin conexión."}

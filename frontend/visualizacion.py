@@ -22,7 +22,7 @@ POSICIONES = {
 }
 
 
-def crear_grafico(grafo, ruta=None, origen=None, destino=None): #Dibuja el mapa con ciudades y conexiones.
+def crear_grafico(grafo, ruta=None, origen=None, destino=None, modo_viaje='tren_min'): #Dibuja el mapa con ciudades y conexiones.
   
     # Lista con todo lo que se va a mostrar en el dibujo
     elementos = []
@@ -30,8 +30,20 @@ def crear_grafico(grafo, ruta=None, origen=None, destino=None): #Dibuja el mapa 
     #Dibuja las líneas entre ciudades
     
     for ciudad_a, vecinos in grafo.items():
-        for ciudad_b, minutos in vecinos.items():
-
+        for ciudad_b, pesos_transporte in vecinos.items():
+            minutos_totales = pesos_transporte[modo_viaje]
+            
+             # Formateamos el tiempo para que se lea mejor (horas y minutos)
+            horas = minutos_totales // 60
+            minutos_restantes = minutos_totales % 60
+            
+            if horas > 0:
+                if minutos_restantes > 0:
+                    texto_tiempo = f"{horas} h {minutos_restantes} min"
+                else:
+                    texto_tiempo = f"{horas} h" # Si es una hora exacta
+            else:
+                texto_tiempo = f"{minutos_totales} min" # Si no alcanza a ser 1 hora
             # Solo dibujamos en una dirección para no repetir líneas
             if ciudad_a > ciudad_b:
                 continue
@@ -71,14 +83,14 @@ def crear_grafico(grafo, ruta=None, origen=None, destino=None): #Dibuja el mapa 
                 showlegend = False,
             ))
 
-            #Para los minutos en el medio de la línea.
+    #Para los minutos en el medio de la línea.
             medio_x = (x0 + x1) / 2
             medio_y = (y0 + y1) / 2
             elementos.append(go.Scatter(
                 x = [medio_x],
                 y = [medio_y],
                 mode = "text",
-                text = [str(minutos)],
+                text = [texto_tiempo], # Usamos nuestro nuevo texto formateado
                 textfont = dict(color = color_numero, size = 11),
                 showlegend = False,
             ))
@@ -111,10 +123,10 @@ def crear_grafico(grafo, ruta=None, origen=None, destino=None): #Dibuja el mapa 
     figura.update_layout(
         paper_bgcolor = "#0e1117",
         plot_bgcolor = "#0e1117",
-        margin = dict(l = 10, r = 10, t = 10, b = 10),
-        xaxis = dict(showgrid = False, zeroline = False, showticklabels = False, range = [0, 11]),
-        yaxis = dict(showgrid = False, zeroline = False, showticklabels = False, range = [1.5, 10.5]),
-        height = 280,
+        margin = dict(l = 0, r = 0, t = 0, b = 0),
+        xaxis = dict(showgrid = False, zeroline = False, showticklabels = False, range = [0.5, 10.5]),
+        yaxis = dict(showgrid = False, zeroline = False, showticklabels = False, range = [1.5, 10.0],),
+        height = 380,
         dragmode = False,
     )
 
