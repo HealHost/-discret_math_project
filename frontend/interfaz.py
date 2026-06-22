@@ -3,22 +3,19 @@ import streamlit as st
 # con ella hacemos los menús, botones y textos de la pantalla
 
 
-#Colores y diseño de la página
+# Colores y diseño de la página
+# Aquí se define cómo se ve la página: colores, tamaños, bordes, etc.
 def aplicar_estilos():
-    
-    # Aquí se define cómo se ve la página: colores, tamaños, bordes, etc.
+
     st.markdown("""
     <style>
-
     /* Color de fondo de toda la app */
     .stApp { background-color: #0e1117; }
-
     /* Color del panel izquierdo */
     [data-testid="stSidebar"] {
         background-color: #161b22;
         border-right: 1px solid #2a2a2a;
     }
-
     /* Cómo se ven los menús desplegables */
     div[data-baseweb="select"] > div {
         min-height: 52px !important;
@@ -26,7 +23,6 @@ def aplicar_estilos():
         background-color: #1e2130 !important;
         border-color: #3a3a4a !important;
     }
-
     /* Caja que muestra el tiempo total */
     .caja-tiempo {
         min-height: 52px;
@@ -41,7 +37,6 @@ def aplicar_estilos():
         font-weight: bold;
         margin-top: 8px;
     }
-
     /* Cómo se ve el botón calcular */
     div.stButton > button {
         min-height: 52px;
@@ -58,7 +53,6 @@ def aplicar_estilos():
     div.stButton > button:hover {
         background-color: #a82020;
     }
-
     /* Caja que muestra la ruta encontrada */
     .ruta-box {
         background-color: #161b22;
@@ -69,7 +63,6 @@ def aplicar_estilos():
         font-size: 16px;
         margin-top: 8px;
     }
-
     /* Texto "Ruta óptima" en rojo */
     .ruta-label {
         color: #cc3333;
@@ -77,18 +70,15 @@ def aplicar_estilos():
         font-size: 14px;
         margin-bottom: 4px;
     }
-
     /* Línea separadora */
     hr { border-color: #2a2a2a; }
-
     </style>
     """, unsafe_allow_html=True)
 
 
-#Panel izquierdo con información del grupo
-
+# Panel izquierdo con información del grupo
+# Muestra el nombre del proyecto, algoritmo e integrantes al lado izquierdo
 def mostrar_sidebar():
-    # Muestra el nombre del proyecto, algoritmo e integrantes al lado izquierdo
     with st.sidebar:
         st.markdown("### Proyecto de\nMatemática Discreta")
         st.markdown("---")
@@ -103,20 +93,15 @@ def mostrar_sidebar():
 - María Henríquez
 """)
 
-
-#Título arriba de la pantalla
-
+# Muestra el título principal y la descripción de la app
 def mostrar_titulo():
-    
-    #Muestra el título principal y la descripción de la app
     st.markdown("**Visualizador Dijkstra**: Ciudades Suizas")
     st.markdown(
         "Selecciona una ciudad de origen y una ciudad de destino "
         "para encontrar la ruta más corta."
     )
-
+# 4 Controles, ciudad origen, destino, cuadro con el tiempo total y boton de calcular
 def mostrar_controles(lista_ciudades, tiempo_total):
-    # Usamos 4 columnas, dándole un poco menos de espacio a la última (el botón)
     col1, col2, col3, col4 = st.columns([2, 2, 2, 1]) 
     
     with col1:
@@ -134,19 +119,14 @@ def mostrar_controles(lista_ciudades, tiempo_total):
         modo_viaje = opciones_transporte[seleccion] 
         
     with col4:
-        # Añadimos saltos de línea vacíos para empujar el botón hacia abajo 
-        # y que quede alineado con las cajas de texto de los selectores.
         st.write("") 
         calcular = st.button("Calcular Ruta", use_container_width=True)
     
-    # Ya no devolvemos el tiempo aquí, lo manejaremos en main.py
     return origen, destino, modo_viaje, calcular
 
-#Muestra la ruta encontrada debajo de los controles
-
+# Muestra el título principal y la descripción de la app
+# Si ya se calculó una ruta, la muestra con flechas entre ciudades
 def mostrar_ruta_optima(ruta):
-    
-    # Si ya se calculó una ruta, la muestra con flechas entre ciudades
     if ruta:
         st.markdown('<div class="ruta-label">Ruta óptima</div>', unsafe_allow_html=True)
         ruta_texto = " → ".join(ruta)

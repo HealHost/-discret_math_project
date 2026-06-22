@@ -1,4 +1,4 @@
-import heapq
+import heapq # Implementa colas de prioridad
 
 def calcular_ruta_dijkstra(grafo, origen, destino, modo_viaje):
     """
@@ -34,7 +34,7 @@ def calcular_ruta_dijkstra(grafo, origen, destino, modo_viaje):
         if tiempo_actual > tiempos[nodo_actual]:
             continue
             
-        # 3. Relajación de aristas (AQUÍ ESTÁ LA MAGIA)
+        # 3. Relajación de aristas
         # 'pesos' ahora es un diccionario: {'auto_min': 19, 'tren_min': 23...}
         for vecino, pesos in grafo[nodo_actual].items():
             

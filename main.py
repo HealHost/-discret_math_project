@@ -42,7 +42,7 @@ if "destino" not in st.session_state:
     st.session_state["destino"] = lista_ciudades[0]
 
 # ==========================================
-# 1. MOSTRAR EL MAPA PRIMERO (ARRIBA)
+# 1. Muestra el mapa primero
 # ==========================================
 figura_actual = crear_grafico(
     grafo,
@@ -53,7 +53,7 @@ figura_actual = crear_grafico(
 )
 st.plotly_chart(figura_actual, use_container_width=True, config={"displayModeBar": False})
 
-# --- NUEVO: Mostrar el tiempo total debajo del mapa de forma destacada ---
+# --- Mostrar el tiempo total debajo del mapa, y conversion de minutos a horas---
 if st.session_state["tiempo_total"] is not None:
     t_total = st.session_state["tiempo_total"]
     horas = t_total // 60
@@ -79,7 +79,7 @@ if st.session_state["tiempo_total"] is not None:
 st.divider()
 
 # ==========================================
-# 2. MOSTRAR LOS CONTROLES (ABAJO DEL MAPA)
+# 2. Mostrar los controles
 # ==========================================
 origen, destino, modo_viaje_seleccionado, calcular = mostrar_controles(
     lista_ciudades,
@@ -87,7 +87,7 @@ origen, destino, modo_viaje_seleccionado, calcular = mostrar_controles(
 )
 
 # ==========================================
-# 3. LÓGICA DEL BOTÓN CALCULAR
+# 3. Lógica del botón calcular
 # ==========================================
 if calcular:
     if origen == destino:
@@ -109,6 +109,6 @@ if calcular:
             st.error(resultado["mensaje"])
 
 # ==========================================
-# 4. MOSTRAR LA RUTA ÓPTIMA TEXTUAL
+# 4. Mostrar ka ruta óptima textual
 # ==========================================
 mostrar_ruta_optima(st.session_state["ruta"])

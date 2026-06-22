@@ -1,8 +1,6 @@
-#Dibuja el mapa de ciudades en la pantalla
-import plotly.graph_objects as go
+import plotly.graph_objects as go #Dibuja el mapa de ciudades en la pantalla
 
 # Posición de cada ciudad en el dibujo (coordenada x, coordenada y)
-
 POSICIONES = {
     "Zúrich":       (6.5,  7.5),
     "Winterthur":   (8.0,  7.5),
@@ -21,14 +19,12 @@ POSICIONES = {
     "Chur":         (8.5,  5.0),
 }
 
-
-def crear_grafico(grafo, ruta=None, origen=None, destino=None, modo_viaje='tren_min'): #Dibuja el mapa con ciudades y conexiones.
-  
+#Dibuja el mapa con ciudades y conexiones.
+def crear_grafico(grafo, ruta=None, origen=None, destino=None, modo_viaje='tren_min'): 
     # Lista con todo lo que se va a mostrar en el dibujo
     elementos = []
 
     #Dibuja las líneas entre ciudades
-    
     for ciudad_a, vecinos in grafo.items():
         for ciudad_b, pesos_transporte in vecinos.items():
             minutos_totales = pesos_transporte[modo_viaje]
@@ -44,17 +40,16 @@ def crear_grafico(grafo, ruta=None, origen=None, destino=None, modo_viaje='tren_
                     texto_tiempo = f"{horas} h" # Si es una hora exacta
             else:
                 texto_tiempo = f"{minutos_totales} min" # Si no alcanza a ser 1 hora
+                
             # Solo dibujamos en una dirección para no repetir líneas
             if ciudad_a > ciudad_b:
                 continue
 
             # Posición de cada ciudad en el dibujo
-            
             x0, y0 = POSICIONES[ciudad_a]
             x1, y1 = POSICIONES[ciudad_b]
 
             # Revisamos si esta línea es parte de la ruta encontrada
-            
             en_la_ruta = (
                 ruta is not None and
                 ciudad_a in ruta and
@@ -67,14 +62,12 @@ def crear_grafico(grafo, ruta=None, origen=None, destino=None, modo_viaje='tren_
                 color_linea = "#8B1A1A"
                 grosor = 4
                 color_numero = "#cc3333"
-                
             else:
                 color_linea = "#555555"
                 grosor = 1.5
                 color_numero = "#aaaaaa"
 
             # Dibujamos la línea entre las dos ciudades
-            
             elementos.append(go.Scatter(
                 x = [x0, x1, None],
                 y = [y0, y1, None],
@@ -90,7 +83,7 @@ def crear_grafico(grafo, ruta=None, origen=None, destino=None, modo_viaje='tren_
                 x = [medio_x],
                 y = [medio_y],
                 mode = "text",
-                text = [texto_tiempo], # Usamos nuestro nuevo texto formateado
+                text = [texto_tiempo],
                 textfont = dict(color = color_numero, size = 11),
                 showlegend = False,
             ))
