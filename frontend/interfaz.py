@@ -137,7 +137,6 @@ def mostrar_controles(lista_ciudades, tiempo_total):
         # Añadimos saltos de línea vacíos para empujar el botón hacia abajo 
         # y que quede alineado con las cajas de texto de los selectores.
         st.write("") 
-        st.write("")
         calcular = st.button("Calcular Ruta", use_container_width=True)
     
     # Ya no devolvemos el tiempo aquí, lo manejaremos en main.py
