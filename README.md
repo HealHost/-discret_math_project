@@ -1,6 +1,6 @@
 # Ruta Mínima en Suiza
 
-Proyecto de Matemáticas Discretas que modela 15 ciudades suizas como un grafo ponderado G = (V, E, w) y calcula la ruta de costo mínimo entre dos ciudades mediante una aplicación web interactiva.
+Proyecto de Matemáticas Discretas que modela 15 ciudades suizas como un grafo ponderado G = (V, E, w) y calcula la ruta de tiempo mínimo entre dos ciudades mediante una aplicación web interactiva.
 
 ## Integrantes y roles
 
@@ -17,7 +17,7 @@ Zúrich, Ginebra, Berna, Lucerna, Basilea, Lausana, Lugano, San Galo, Winterthur
 
 ## Datos
 
-El grafo está compuesto por 15 ciudades y 20 conexiones. El peso de cada conexión corresponde al **tiempo de viaje en tren (minutos)**, obtenido de [Rail Europe](https://www.raileurope.com).
+El grafo está compuesto por 15 ciudades y 20 conexiones. El peso de cada conexión corresponde al **tiempo de viaje en minutos**, según el medio de transporte seleccionado por el usuario (tren, auto, caminando o bicicleta).
 
 Los datos se encuentran en `data/conexiones.csv`.
 
@@ -61,4 +61,6 @@ Si te aparece el error `command not found: streamlit`, usa en su lugar:
 python -m streamlit run main.py
 ```
 
-Esto abre la aplicación en el navegador para elegir origen y destino, y ver la ruta de costo mínimo.
+Esto abre la aplicación en el navegador para elegir origen, destino y medio de transporte, y ver la ruta de tiempo mínimo.
+
+**Alternativa desde VS Code:** en el menú superior, ve a `Run` → `Run Without Debugging`.
