@@ -21,6 +21,7 @@ POSICIONES = {
 
 #Dibuja el mapa con ciudades y conexiones.
 def crear_grafico(grafo, ruta=None, origen=None, destino=None, modo_viaje='tren_min'): 
+
     # Lista con todo lo que se va a mostrar en el dibujo
     elementos = []
 
@@ -29,7 +30,7 @@ def crear_grafico(grafo, ruta=None, origen=None, destino=None, modo_viaje='tren_
         for ciudad_b, pesos_transporte in vecinos.items():
             minutos_totales = pesos_transporte[modo_viaje]
             
-             # Formateamos el tiempo para que se lea mejor (horas y minutos)
+            # Formateamos el tiempo para que se lea mejor (horas y minutos)
             horas = minutos_totales // 60
             minutos_restantes = minutos_totales % 60
             
