@@ -13,9 +13,10 @@ Desarrollado para la asignatura de Matemáticas Discretas (ICINF1103) de la Univ
 
 ## Características Principales
 
-* **Modelamiento Matemático:** El sistema representa las ciudades como un grafo ponderado no dirigido $G = (V, E, w)$.
-* **Pesos Dinámicos:** La función de peso $w$ representa el tiempo de viaje en minutos y se recalcula en tiempo real si el usuario elige viajar en Tren, Auto, Bicicleta o Caminando.
-* **Algoritmo de Dijkstra:** Implementación eficiente utilizando una estructura de datos de cola de prioridad (Min-Heap), logrando una complejidad temporal de $\mathcal{O}(|E| + |V| \log |V|)$.
+* **Modelamiento Matemático:** El sistema representa las ciudades como un grafo ponderado no dirigido G = (V, E, w).
+* **Pesos Dinámicos:** La función de peso w representa el tiempo de viaje en minutos y se recalcula en tiempo real si el usuario elige viajar en Tren, Auto, Bicicleta o Caminando.
+* **Algoritmo de Dijkstra:** Implementación eficiente utilizando una estructura de datos de cola de prioridad (Min-Heap), 
+logrando una complejidad temporal de {O}(|E| + |V| \log |V|).
 * **Visualización Interactiva:** Renderizado dinámico del grafo y resaltado de la ruta óptima en la interfaz web.
 
 ---
